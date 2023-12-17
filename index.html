@@ -1,0 +1,665 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Para tiiiiiiii</title>
+    <link href="https://fonts.googleapis.com/css2?family=Shadows+Into+Light&display=swap" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+</head>
+<style>
+    @import url("https://fonts.googleapis.com/css?family=Gaegu");
+
+.about {
+    position: fixed;
+    z-index: 10;
+    bottom: 10px;
+    right: 10px;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+    transition: all 0.2s ease;
+}
+
+
+
+body {
+    background-color: #b9e6d3;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    font-family: "Gaegu", cursive;
+    overflow: hidden;
+}
+
+.reload {
+    position: absolute;
+    top: 0;
+    z-index: 1;
+    color: #4bb58c;
+    transition: all 0.5s 0.5s ease;
+    width: auto;
+    height: auto;
+    opacity: 0;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.reload:hover {
+    color: white;
+    top: 5px;
+}
+
+.reload:after {
+    background-color: #ef6c57;
+    content: "";
+    width: 0;
+    height: 2px;
+    opacity: 1;
+    border-radius: 30px;
+    position: absolute;
+    bottom: -4px;
+    z-index: -1;
+    transition: width 0.5s 0.5s ease, height 0.5s 0s ease;
+}
+
+.reload:hover:after {
+    transition: width 0.5s 0s ease, height 0.5s 0.5s ease;
+    width: calc(100% + 30px);
+    height: calc(100% + 10px);
+}
+
+.content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.heart {
+    width: 120px;
+    height: 120px;
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all 1s 0.2s ease;
+    opacity: 1;
+}
+
+.heart:hover {
+    width: 180px;
+    height: 180px;
+    cursor: pointer;
+}
+
+.heart.anime {
+    animation: heartbeat 0.8s 0.2s ease infinite alternate;
+    position: absolute;
+    cursor: auto;
+}
+
+@keyframes heartbeat {
+    0% {
+        width: 120px;
+        height: 120px;
+        transition: all 1s 0.2s ease;
+    }
+
+    100% {
+        width: 140px;
+        height: 140px;
+        transition: all 1s 0.2s ease;
+    }
+}
+
+/* elements that compose the heart */
+.heart:before,
+.heart:after {
+    position: absolute;
+    background-color: #ef6c57;
+    content: "";
+    width: 50%;
+    height: 75%;
+}
+
+.heart:before {
+    transform: rotate(-45deg);
+    border-radius: 400px 400px 0px 100px;
+    left: 16%;
+}
+
+.heart:after {
+    transform: rotate(45deg);
+    border-radius: 400px 400px 100px 0px;
+    right: 16%;
+}
+
+/* active state to grow the heart */
+.heart.active {
+    width: 600px;
+    height: 600px;
+    animation: none !important;
+    transition: all 1s 0.2s ease;
+    cursor: auto;
+    transform: rotate(10deg), rotate(0deg);
+    position: absolute;
+}
+
+.heart:hover.active {
+    width: 650px;
+    height: 650px;
+}
+
+.heart .title {
+    opacity: 1;
+    color: #f2f2f2;
+    position: absolute;
+    transition: all 0.8s 0.5s ease;
+    z-index: 1;
+    text-align: center;
+    margin: 0 auto;
+    margin-top: -3%;
+    animation: title 3s 1s ease infinite;
+}
+
+@keyframes title {
+
+    0%,
+    25%,
+    100% {
+        transform: rotate(0deg);
+    }
+
+    5%,
+    15% {
+        transform: rotate(5deg);
+    }
+
+    10%,
+    20% {
+        transform: rotate(-5deg);
+    }
+}
+
+
+.heart.active .title {
+    opacity: 0;
+    transition: all 0.8s 0s ease;
+}
+
+
+.creditos {
+    color: #0a0a0a;
+    margin: 0 auto;
+    width: 900%;
+    position: fixed;
+    bottom: 10px; /* Ajusta el valor según sea necesario */
+    left: 10px;  /* Ajusta el valor según sea necesario */
+    font-size: 16px;
+    z-index: 1;
+
+}
+
+/* message */
+.heart .message {
+    opacity: 0;
+    color: #f2f2f2;
+    transition: all 0.2s 0s ease;
+    margin: 0 auto;
+    width: 900%;
+    position: fixed;
+    bottom: 10px; /* Ajusta el valor según sea necesario */
+    left: 10px;  /* Ajusta el valor según sea necesario */
+    font-size: 16px;
+    z-index: 1;
+
+}
+
+
+.heart.active .message {
+    opacity: 1;
+    z-index: 1;
+    margin-top: -10%;
+    transition: all 1s 0.5s ease;
+}
+
+/* floating hearts */
+.hearts {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 1;
+}
+
+.heart2,
+.heart3,
+.heart4, 
+.heart5{
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    opacity: 0;
+    z-index: -1;
+    transition: all 1s ease;
+}
+
+.heart2.active {
+    opacity: 1;
+    animation: floatHearts1 2s 0.2s ease;
+}
+
+.heart3.active {
+    opacity: 1;
+    animation: floatHearts2 2s 0.2s ease;
+}
+
+.heart4.active {
+    opacity: 1;
+    animation: floatHearts3 2s 0.2s ease;
+}
+
+@keyframes floatHearts1 {
+    0% {
+        width: 20px;
+        height: 20px;
+        left: 50%;
+        top: 60%;
+        transform: rotate(0deg);
+    }
+
+    50% {
+        top: 30%;
+    }
+
+    100% {
+        width: 50px;
+        height: 50px;
+        left: -20%;
+        top: 20%;
+        transform: rotate(-40deg);
+    }
+}
+
+@keyframes floatHearts2 {
+    0% {
+        width: 20px;
+        height: 20px;
+        right: 50%;
+        top: 60%;
+        transform: rotate(0deg);
+    }
+
+    100% {
+        width: 100px;
+        height: 100px;
+        right: 0%;
+        top: -20%;
+        transform: rotate(40deg);
+    }
+}
+
+@keyframes floatHearts3 {
+    0% {
+        width: 20px;
+        height: 20px;
+        right: 50%;
+        top: 50%;
+        transform: rotate(0deg);
+    }
+
+    50% {
+        top: 100%;
+    }
+
+    100% {
+        width: 80px;
+        height: 80px;
+        right: 0%;
+        top: 110%;
+        transform: rotate(90deg);
+    }
+}
+
+@keyframes floatHearts4 {
+    0% {
+        width: 15px;
+        height: 15px;
+        left: 80%;
+        top: 40%;
+        transform: rotate(0deg);
+    }
+
+    50% {
+        top: 20%;
+    }
+
+    100% {
+        width: 30px;
+        height: 30px;
+        left: 60%;
+        top: 10%;
+        transform: rotate(-30deg);
+    }
+}
+
+.heart2:before,
+.heart2:after,
+.heart3:before,
+.heart3:after,
+.heart4:before,
+.heart4:after {
+    position: absolute;
+    background-color: #ef6c57;
+    content: "";
+    width: 50%;
+    height: 90%;
+    z-index: 2;
+}
+
+.heart2:before,
+.heart3:before,
+.heart4:before {
+    transform: rotate(-45deg);
+    border-radius: 400px 400px 0px 100px;
+    left: 10%;
+}
+
+.heart2:after,
+.heart3:after,
+.heart4:after {
+    transform: rotate(45deg);
+    border-radius: 400px 400px 100px 0px;
+    right: 10%;
+}
+
+
+.audio-player {
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    width: 250px;
+    max-width: 100%;
+    background-color: #fff;
+    box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.1);
+    z-index: 999;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.audio-player iframe {
+    width: 100%;
+    height: 55px;
+    border: none;
+}
+
+.slider div p {
+    color: hwb(222 49% 15%);
+    bottom: -65px;
+    font-size: 20px;
+    text-align: center;
+    transition: opacity 0.5s ease-in-out;
+}
+
+.slider {
+    animation-delay: .8s;
+    animation-fill-mode: backwards;
+    margin: 60px auto 0 auto;
+    height: 360px;
+    width: 240px;
+    padding: 40px;
+    top: 100px;
+    perspective: 1000px;
+    transition: ease-in-out .2s;
+}
+
+.slide img {
+    text-align: center;
+    width: 75%;
+    height: 75%;
+    -webkit-user-drag: none;
+    border-radius: 5px;
+}
+
+.slide {
+    -webkit-user-select: none;
+    user-select: none;
+    position: absolute;
+    height: 72%;
+    width: 72%;
+    background: #fcfcfc;
+    transform-style: preserve-3d;
+    text-align: center;
+    border: 12px white solid;
+    box-sizing: border-box;
+    border-bottom: 55px white solid;
+    border-radius: 5px;
+    transition: transform cubic-bezier(0, 1.95, .49, .73) 0.4s, opacity 0.2s ease;
+}
+</style>
+<!--HTML-->
+<body>
+    <div class="audio-player">
+        <iframe width="100%" height="166" scrolling="no" frameborder="no" allow="autoplay"
+        src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/42555908&color=%23b91212&auto_play=true&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true"></iframe>
+    </div>
+
+    <p class="reload">recargar</p>
+    <div class="content">
+
+        <div class="heart">
+
+            <p class="title">Presiona...</p>
+            <div class="container">
+                <div class="slider">
+                    <div class="slide"><img src="https://i.pinimg.com/originals/47/6b/85/476b85783b816fef1d2c56ebe247cc0f.gif" />
+                        <p>Y sin miedo a morir en el intento, te queyo</p>
+                    </div>
+                    <div class="slide"><img src="https://c.tenor.com/S16zArIPHx8AAAAC/bear-we-bare-bears.gif" />
+                        <p>Y no lo olvides, siempre hazlo con pasión</p>
+                    </div>
+                    <div class="slide"><img
+                            src="https://i.pinimg.com/originals/07/70/c4/0770c44187e13cf9ec232c2302db2fcf.gif" />
+                        <p>Si alguna vez necesitas algo, aquí estoy, siempre</p>
+                    </div>
+                    <div class="slide"><img
+                            src="https://pa1.narvii.com/7140/dc7f1eb4c8907fbedc9ecba29c792d7ac39e448dr1-480-480_hq.gif" />
+                        <p>No te detengas hasta que estés orgulloso</p>
+                    </div>
+                    <div class="slide"><img
+                            src="https://i.pinimg.com/originals/4e/31/6e/4e316e9d4ffbafdbe837587811b917b2.gif" />
+                        <p>Sigue luchando hasta alcanzar tus objetivos</p>
+                    </div>
+                    <div class="slide"><img
+                            src="https://i.pinimg.com/originals/2f/74/25/2f742539b8b1ad66d11d56600b27c8c3.gif" />
+                        <p>Claro, la vida es dura, pero recuerda que tú también lo eres...</p>
+                    </div>
+                    <div class="slide"><img
+                            src="https://i.pinimg.com/originals/d2/1c/46/d21c460bd848caabe3a4bd99b6c0b21d.gif" />
+                        <p>Hola guapo, quiero compartirte algo</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="heart anime"></div>
+        <div class="hearts">
+            <div class="heart2"></div>
+            <div class="heart3"></div>
+            <div class="heart4"></div>
+        </div>
+        <p class="creditos">     
+                 by: ayiyi</p>
+
+    </div>
+    <!--Lo bueno se viene la pura lógica del JS-->
+    <script>
+        var heart = document.querySelector(".heart"),
+            reload = document.querySelector(".reload"),
+            hearts = document.querySelector(".hearts"),
+            allHearts = document.querySelectorAll(".hearts div"),
+            heartAnime = document.querySelector(".heart.anime"),
+            sliderContainer = document.querySelector(".hearts"),
+            slider = document.querySelector('.slider'),
+            sliders = slider.children;
+
+        // Ocultar las sliders al principio
+        slider.style.display = 'none';
+
+        heart.addEventListener("click", animation);
+        reload.addEventListener("click", refresh);
+        window.addEventListener('load', onWndLoad, false);
+
+        var initX = null;
+        var transX = 0;
+        var rotZ = 0;
+        var transY = 0;
+        var curSlide = null;
+        var Z_DIS = 50;
+        var Y_DIS = 10;
+        var TRANS_DUR = 0.4;
+
+        function animation() {
+            heart.classList.add("active");
+            reload.setAttribute(
+                "style",
+                "opacity: 1; cursor: pointer; pointer-events: auto;  "
+            );
+            heartAnime.style.opacity = "0";
+
+            allHearts.forEach(function (element) {
+                element.classList.add("active");
+            });
+
+            // Mostrar las sliders cuando se hace clic en el corazón
+            slider.style.display = 'block';
+
+            // Mueve las sliders dentro del corazón
+            sliderContainer.appendChild(slider);
+
+            init();
+        }
+
+        function refresh() {
+            heart.classList.remove("active");
+            reload.setAttribute("style", "opacity: 0; pointer-events: none;");
+            heartAnime.style.opacity = "1";
+
+            allHearts.forEach(function (element) {
+                element.classList.remove("active");
+            });
+
+            // Ocultar las sliders al recargar
+            slider.style.display = 'none';
+        }
+
+        function onWndLoad() {
+            slider.style.display = 'none';
+        }
+
+        function init() {
+            var z = 0, y = 0;
+            for (var i = sliders.length - 1; i >= 0; i--) {
+                sliders[i].style.transform = 'translateZ(' + z + 'px) translateY(' + y + 'px)';
+                z -= Z_DIS;
+                y += Y_DIS;
+            }
+            attachEvents(sliders[sliders.length - 1]);
+        }
+
+        function attachEvents(elem) {
+            curSlide = elem;
+            curSlide.addEventListener('mousedown', slideMouseDown, false);
+            curSlide.addEventListener('touchstart', slideMouseDown, false);
+        }
+
+        function slideMouseDown(e) {
+            if (e.touches) {
+                initX = e.touches[0].clientX;
+            } else {
+                initX = e.pageX;
+            }
+            document.addEventListener('mousemove', slideMouseMove, false);
+            document.addEventListener('touchmove', slideMouseMove, false);
+            document.addEventListener('mouseup', slideMouseUp, false);
+            document.addEventListener('touchend', slideMouseUp, false);
+        }
+
+        var prevSlide = null;
+
+        function slideMouseMove(e) {
+            var mouseX;
+            if (e.touches) {
+                mouseX = e.touches[0].clientX;
+            } else {
+                mouseX = e.pageX;
+            }
+
+            transX += mouseX - initX;
+            rotZ = transX / 20;
+            transY = -Math.abs(transX / 15);
+
+            curSlide.style.transition = 'none';
+            curSlide.style.webkitTransform = 'translateX(' + transX + 'px)' + ' rotateZ(' + rotZ + 'deg)' + ' translateY(' + transY + 'px)';
+            curSlide.style.transform = 'translateX(' + transX + 'px)' + ' rotateZ(' + rotZ + 'deg)' + ' translateY(' + transY + 'px)';
+            var j = 1;
+
+            for (var i = sliders.length - 2; i >= 0; i--) {
+                sliders[i].style.webkitTransform = 'translateX(' + transX / (2 * j) + 'px)' + ' rotateZ(' + rotZ / (2 * j) + 'deg)' + ' translateY(' + (Y_DIS * j) + 'px)' + ' translateZ(' + (-Z_DIS * j) + 'px)';
+                sliders[i].style.transform = 'translateX(' + transX / (2 * j) + 'px)' + ' rotateZ(' + rotZ / (2 * j) + 'deg)' + ' translateY(' + (Y_DIS * j) + 'px)' + ' translateZ(' + (-Z_DIS * j) + 'px)';
+                sliders[i].style.transition = 'none';
+                j++;
+            }
+
+            initX = mouseX;
+            e.preventDefault();
+            if (Math.abs(transX) >= curSlide.offsetWidth - 30) {
+                document.removeEventListener('mousemove', slideMouseMove, false);
+                document.removeEventListener('touchmove', slideMouseMove, false);
+                curSlide.style.transition = 'ease 0.2s';
+                curSlide.style.opacity = 0;
+                prevSlide = curSlide;
+                attachEvents(sliders[sliders.length - 2]);
+                slideMouseUp();
+                setTimeout(function () {
+                    slider.insertBefore(prevSlide, slider.firstChild);
+                    prevSlide.style.transition = 'none';
+                    prevSlide.style.opacity = '1';
+                    slideMouseUp();
+                }, 201);
+                return;
+            }
+        }
+
+        function slideMouseUp() {
+            transX = 0;
+            rotZ = 0;
+            transY = 0;
+            curSlide.style.transition = 'cubic-bezier(0,1.95,.49,.73) ' + TRANS_DUR + 's';
+            curSlide.style.webkitTransform = 'translateX(' + transX + 'px)' + 'rotateZ(' + rotZ + 'deg)' + ' translateY(' + transY + 'px)';
+            curSlide.style.transform = 'translateX(' + transX + 'px)' + 'rotateZ(' + rotZ + 'deg)' + ' translateY(' + transY + 'px)';
+            var j = 1;
+
+            for (var i = sliders.length - 2; i >= 0; i--) {
+                sliders[i].style.transition = 'cubic-bezier(0,1.95,.49,.73) ' + TRANS_DUR / (j + 0.9) + 's';
+                sliders[i].style.webkitTransform = 'translateX(' + transX + 'px)' + 'rotateZ(' + rotZ + 'deg)' + ' translateY(' + (Y_DIS * j) + 'px)' + ' translateZ(' + (-Z_DIS * j) + 'px)';
+                sliders[i].style.transform = 'translateX(' + transX + 'px)' + 'rotateZ(' + rotZ + 'deg)' + ' translateY(' + (Y_DIS * j) + 'px)' + ' translateZ(' + (-Z_DIS * j) + 'px)';
+                j++;
+            }
+
+            document.removeEventListener('mousemove', slideMouseMove, false);
+            document.removeEventListener('touchmove', slideMouseMove, false);
+        }
+    </script>
+
+
+</body>
+
+</html>
