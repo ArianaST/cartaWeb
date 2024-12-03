@@ -1,4 +1,4 @@
-# **CARTA CON ANIMACIONES Y MÚSICA**
+# **CARTA CON MÚSICA**
 
 Este proyecto es una carta sencilla construida con **HTML**, **CSS**, y **JavaScript**. La carta incluye animaciones suaves, un fondo musical con el tema principal de **Forrest Gump**, y una estructura visual responsiva utilizando **tarjetas** para mostrar mensajes bonitos. Es un ejemplo de diseño web simple pero llamativo con efectos y responsividad.
 
